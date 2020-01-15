@@ -1,17 +1,18 @@
 /* eslint-disable max-len */
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Image, Text, View, PropTypes} from 'react-native';
+import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
+import PropTypes from 'prop-types';
 
 const ListItem = (props) => {
   console.log(props);
   return (
-    <TouchableOpacity>
+    <TouchableOpacity style={styles.row}>
       <Image
-        style={{width: 100, height: 100}}
+        style={styles.image}
         source={{uri: props.singleMedia.thumbnails.w160}}
       />
-      <View>
-        <Text>{props.singleMedia.title}</Text>
+      <View style={styles.textbox}>
+        <Text style={styles.listTitle}>{props.singleMedia.title}</Text>
         <Text>{props.singleMedia.description}</Text>
       </View>
     </TouchableOpacity>
@@ -23,11 +24,28 @@ ListItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  row: {
+    flexDirection: 'row',
+    padding: 15,
+    backgroundColor: '#ccc',
+    marginBottom: 5,
+    borderRadius: 16,
+  },
+  imagebox: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  image: {
+    flex: 1,
+    borderRadius: 16,
+  },
+  textbox: {
+    flex: 2,
+    padding: 10,
+  },
+  listTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    paddingBottom: 15,
   },
 });
 

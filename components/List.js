@@ -1,6 +1,9 @@
 import React from 'react';
-import {StyleSheet, FlatList, PropTypes} from 'react-native';
+import {
+  FlatList,
+} from 'react-native';
 import ListItem from './ListItem';
+import PropTypes from 'prop-types';
 
 const List = (props) => {
   console.log(props);
@@ -15,14 +18,5 @@ const List = (props) => {
 List.propTypes = {
   mediaArray: PropTypes.array,
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default List;

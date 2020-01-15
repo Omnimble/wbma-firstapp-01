@@ -35,7 +35,7 @@ const mediaArray = [
 
 const App = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <List mediaArray={mediaArray} />
     </View>
   );
@@ -43,10 +43,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingTop: 40,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
