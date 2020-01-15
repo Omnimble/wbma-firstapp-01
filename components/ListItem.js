@@ -1,16 +1,25 @@
 /* eslint-disable max-len */
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
+import {StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  View,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
+const mediaURL = 'http://media.mw.metropolia.fi/wbma/uploads/';
+
 const ListItem = (props) => {
-  console.log(props);
+  console.log('list item props', props);
   return (
     <TouchableOpacity style={styles.row}>
-      <Image
-        style={styles.image}
-        source={{uri: props.singleMedia.thumbnails.w160}}
-      />
+      <View style={styles.textbox}>
+        <Image
+          style={styles.image}
+          source={{uri: mediaURL + props.singleMedia.filename}}
+        />
+      </View>
       <View style={styles.textbox}>
         <Text style={styles.listTitle}>{props.singleMedia.title}</Text>
         <Text>{props.singleMedia.description}</Text>
