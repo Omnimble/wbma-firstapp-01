@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable max-len */
 import React from 'react';
 import {StyleSheet,
@@ -22,7 +23,7 @@ const ListItem = (props) => {
       </View>
       <View style={styles.textbox}>
         <Text style={styles.listTitle}>{props.singleMedia.title}</Text>
-        <Text>{props.singleMedia.description}</Text>
+        <Text style={styles.listDescription}>{props.singleMedia.description}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -33,19 +34,27 @@ ListItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    position: 'absolute',
+    top: 0,
+    marginTop: 20,
+    bottom: 0,
+  },
   row: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     padding: 15,
-    backgroundColor: '#ccc',
-    marginBottom: 5,
-    borderRadius: 16,
+    backgroundColor: 'rgba(238,238,238, 0.85)',
+    margin: 10,
+    borderRadius: 5,
+    borderStyle: 'solid',
+    borderWidth: 2,
   },
   imagebox: {
     flex: 1,
   },
   image: {
     flex: 1,
-    borderRadius: 16,
+    borderRadius: 50,
   },
   textbox: {
     flex: 2,
@@ -53,8 +62,14 @@ const styles = StyleSheet.create({
   },
   listTitle: {
     fontWeight: 'bold',
-    fontSize: 20,
-    paddingBottom: 15,
+    fontSize: 22,
+    paddingBottom: 10,
+    color: 'darkred',
+  },
+  listDescription: {
+    fontStyle: 'italic',
+    fontSize: 16,
+    paddingBottom: 10,
   },
 });
 
