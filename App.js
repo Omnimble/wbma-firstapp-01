@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
 import {MediaProvider} from './contexts/MediaContext';
-import Navigator from '.navigators/Navigator';
+import Navigator from './navigators/Navigator';
 
 const App = () => {
   return (
