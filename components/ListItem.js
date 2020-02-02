@@ -1,76 +1,47 @@
-/* eslint-disable indent */
-/* eslint-disable max-len */
 import React from 'react';
-import {StyleSheet,
-  TouchableOpacity,
-  Image,
+import {
+  ListItem as BaseListItem,
+  Left,
+  Body,
+  Right,
+  Button,
   Text,
-  View,
-} from 'react-native';
+  Thumbnail,
+  H3,
+} from 'native-base';
 import PropTypes from 'prop-types';
 
 const mediaURL = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
 const ListItem = (props) => {
-  console.log('list item props', props);
   return (
-    <TouchableOpacity style={styles.row}>
-      <View style={styles.textbox}>
-        <Image
-          style={styles.image}
-          source={{uri: mediaURL + props.singleMedia.filename}}
+    <BaseListItem thumbnail>
+      <Left>
+        <Thumbnail
+          square
+          source={{uri: mediaURL + props.singleMedia.thumbnails.w160}}
         />
-      </View>
-      <View style={styles.textbox}>
-        <Text style={styles.listTitle}>{props.singleMedia.title}</Text>
-        <Text style={styles.listDescription}>{props.singleMedia.description}</Text>
-      </View>
-    </TouchableOpacity>
+      </Left>
+      <Body>
+        <H3 numberOfLines={1}>{props.singleMedia.title}</H3>
+        <Text numberOfLines={1}>{props.singleMedia.description}</Text>
+      </Body>
+      <Right>
+        <Button onPress={
+          () => {
+            props.navigation.push('Single', {file: props.singleMedia});
+          }
+        }>
+          <Text>View</Text>
+        </Button>
+      </Right>
+    </BaseListItem>
   );
 };
 
 ListItem.propTypes = {
   singleMedia: PropTypes.object,
+  navigation: PropTypes.object,
 };
-
-const styles = StyleSheet.create({
-  header: {
-    position: 'absolute',
-    top: 0,
-    marginTop: 20,
-    bottom: 0,
-  },
-  row: {
-    flexDirection: 'row-reverse',
-    padding: 15,
-    backgroundColor: 'rgba(238,238,238, 0.85)',
-    margin: 10,
-    borderRadius: 5,
-    borderStyle: 'solid',
-    borderWidth: 2,
-  },
-  imagebox: {
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-    borderRadius: 50,
-  },
-  textbox: {
-    flex: 2,
-    padding: 10,
-  },
-  listTitle: {
-    fontWeight: 'bold',
-    fontSize: 22,
-    paddingBottom: 10,
-    color: 'darkred',
-  },
-  listDescription: {
-    fontStyle: 'italic',
-    fontSize: 16,
-    paddingBottom: 10,
-  },
-});
 
 export default ListItem;

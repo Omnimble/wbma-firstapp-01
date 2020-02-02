@@ -1,37 +1,62 @@
-/* eslint-disable indent */
 import React from 'react';
+import {
+  Container,
+  Content,
+  Card,
+  CardItem,
+  Left,
+  Body,
+  H3,
+  Icon,
+  Text,
+} from 'native-base';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import AsyncImage from '../components/AsyncImage';
+import {Dimensions} from 'react-native';
+
+const deviceHeight = Dimensions.get('window').height;
+
+console.log('dh', deviceHeight);
 
 const mediaURL = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
 const Single = (props) => {
-  const filename = props.navigation.getParam('filename', 'Img not found.');
-  console.log('Img filename: ' + filename);
+  const {navigation} = props;
+  console.log('Singel navi', navigation.state);
+  const file = navigation.state.params.file;
   return (
-    <View style={styles.container}>
-      <Text stlye={styles.title}>
-        {props.navigation.getParam('title', 'No title')}
-      </Text>
-      <Image stlye={styles.image}
-        source={{uri: mediaURL + filename}}
-        />
-    </View>
+    <Container>
+      <Content>
+        <Card>
+          <CardItem>
+            <AsyncImage
+              style={{
+                width: '100%',
+                height: deviceHeight / 2,
+              }}
+              spinnerColor='#777'
+              source={{uri: mediaURL + file.filename}}
+            />
+          </CardItem>
+          <CardItem>
+            <Left>
+              <Icon name='image'/>
+              <Body>
+                <H3>{file.title}</H3>
+                <Text>{file.description}</Text>
+                <Text>By {file.user_id}</Text>
+              </Body>
+            </Left>
+          </CardItem>
+        </Card>
+      </Content>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 40,
-  },
-});
-
+Single.propTypes = {
+  navigation: PropTypes.object,
+  file: PropTypes.object,
+};
 
 export default Single;

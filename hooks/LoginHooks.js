@@ -30,6 +30,7 @@ const useSignUpForm = () => {
         full_name: text,
       }));
   };
+
   return {
     handleUsernameChange,
     handlePasswordChange,
@@ -38,6 +39,5 @@ const useSignUpForm = () => {
     inputs,
   };
 };
-
 
 export default useSignUpForm;
