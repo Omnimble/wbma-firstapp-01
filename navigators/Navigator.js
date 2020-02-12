@@ -61,6 +61,7 @@ const StackNavigator = createStackNavigator(
         screen: TabNavigator,
         navigationOptions: {
           headerMode: 'none', // this will hide the header
+          headerLeft: ()=>{}, // this will hide back button
         },
       },
       Single: {

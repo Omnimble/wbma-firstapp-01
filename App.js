@@ -1,3 +1,4 @@
+/* eslint-disable max-len, no-undef */
 import React, {useState, useEffect} from 'react';
 import {MediaProvider} from './contexts/MediaContext';
 import Navigator from './navigators/Navigator';

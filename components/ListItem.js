@@ -10,8 +10,7 @@ import {
   H3,
 } from 'native-base';
 import PropTypes from 'prop-types';
-
-const mediaURL = 'http://media.mw.metropolia.fi/wbma/uploads/';
+import {mediaURL} from '../constants/urlConst';
 
 const ListItem = (props) => {
   return (
